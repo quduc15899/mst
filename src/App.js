@@ -1,25 +1,57 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+// import './App.css';
+import {
+  BrowserRouter as BRouter,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+import Logout from './Component/Logout';
+import CheckAtt from './Component/CheckAtt';
+import Login from './Component/Login';
+import Home from './Component/Home/Home';
+import Header from './Component/Home/Header';
+import Footer from './Component/Home/Footer';
+import QRResult from './Component/Home/QRResult';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BRouter>
+      <Switch>
+        <Route exact path="/">
+          <div>
+                  <Header />
+                  <Home />
+                  <Footer />
+          </div>
+          
+        </Route>
+        <Route path="/logout">
+          <Logout />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/qr">
+          <div>
+                  <Header />
+                  <QRResult />
+                  <Footer />
+          </div>
+          
+        </Route>
+        <Route exact path="/checkatt">
+          <div>
+                  <CheckAtt />
+          </div>
+          
+        </Route>
+        
+      </Switch>
+    </BRouter>
+
   );
 }
 
